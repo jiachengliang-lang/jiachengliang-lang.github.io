@@ -298,7 +298,6 @@ function projectWindow(p) {
       <p class="pw__line">${esc(p.oneLine)}</p>
       <div class="pw__nums">${picks.map((m) => `<div class="card--metric pw__num"><div class="card__big">${esc(m.big)}</div><p class="card__label">${esc(m.label)}</p></div>`).join("")}</div>
       <p class="pw__tags">${esc(p.tags.slice(0, 4).join(" · "))}</p>
-      <p class="pw__live" data-gh></p>
       <div class="pw__links">${links}</div>
     </div>
   </article>`;

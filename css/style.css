@@ -969,6 +969,28 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: -
 }
 .pw__credit:hover { text-decoration: underline; }
 
+/* ---------- contribution graph ---------- */
+.gc { margin-top: 6px; }
+.gc__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.gc__lbl { font: 400 9px var(--mono); fill: var(--text-2); }
+.gc__c { transform-box: fill-box; transform-origin: center; transform: scale(.4); opacity: 0;
+  transition: transform .5s cubic-bezier(.2, .8, .2, 1), opacity .5s var(--ease); transition-delay: var(--d); }
+.gh__activity.is-drawn .gc__c { transform: none; opacity: 1; }
+.gc__c--0 { fill: color-mix(in srgb, var(--text) 8%, transparent); }
+.gc__c--1 { fill: color-mix(in srgb, var(--blue) 32%, transparent); }
+.gc__c--2 { fill: color-mix(in srgb, var(--blue) 55%, transparent); }
+.gc__c--3 { fill: color-mix(in srgb, var(--blue) 78%, transparent); }
+.gc__c--4 { fill: var(--blue); }
+.gc__legend { display: flex; align-items: center; justify-content: flex-end; gap: 4px; margin-top: 12px;
+  font-family: var(--mono); font-size: 11px; color: var(--text-2); }
+.gc__legend i { width: 11px; height: 11px; border-radius: 2.5px; display: inline-block; }
+.gc__legend .gc__c--0 { background: color-mix(in srgb, var(--text) 8%, transparent); }
+.gc__legend .gc__c--1 { background: color-mix(in srgb, var(--blue) 32%, transparent); }
+.gc__legend .gc__c--2 { background: color-mix(in srgb, var(--blue) 55%, transparent); }
+.gc__legend .gc__c--3 { background: color-mix(in srgb, var(--blue) 78%, transparent); }
+.gc__legend .gc__c--4 { background: var(--blue); }
+@media (prefers-reduced-motion: reduce) { .gc__c { transform: none; opacity: 1; transition: none; } }
+
 /* ---------- motion ---------- */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.is-in { opacity: 1; transform: none; }

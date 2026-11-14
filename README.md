@@ -12,7 +12,7 @@ js/ambient.js       animated section backgrounds: k-means, loss-surface optimize
                     gradient field, attention (each a small live simulation on a sticky canvas)
 js/train.js         "Train one yourself" lab: a 2-12-12-1 network trained live with Adam
 js/lab.js           opens the lab as a hidden overlay: hero network click, T key, nav loss readout, #train
-js/github.js        "Shipped in public": live repo stats and weekly commit chart from GitHub's public API
+js/github.js        contribution graph from the GitHub profile (via github-contributions-api.jogruber.de)
 js/chat.js          "Ask about me" chat (live via the Worker, or offline keyword search)
 assets/             project, research and hobby images
 worker/             Cloudflare Worker that answers chat questions with Claude

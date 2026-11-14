@@ -267,11 +267,6 @@ export const SITE = {
   },
   github: {
     user: "jiachengliang-lang",
-    repos: [
-      { repo: "yih0nk/rewardsmith", team: true, lang: "Python", desc: "Text-to-robot-skill training with LLM agents." },
-      { repo: "jiachengliang-lang/vault", lang: "Go", desc: "Fault-tolerant payments backend on AWS." },
-      { repo: "jiachengliang-lang/yellow-brawl", lang: "JavaScript", desc: "Real-time multiplayer fighting game." },
-    ],
   },
 
   labHead: {
