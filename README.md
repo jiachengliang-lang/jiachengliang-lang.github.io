@@ -18,6 +18,8 @@ assets/             project, research and hobby images
 worker/             Cloudflare Worker that answers chat questions with Claude
 ```
 
+Live at https://jiachengliang.pages.dev (Cloudflare Pages) and https://jiachengliang-lang.github.io (GitHub Pages). Both update on every push to `main`.
+
 ## Run locally
 
 ```bash
