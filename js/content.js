@@ -214,7 +214,7 @@ export const SITE = {
       role: "I work on the hardware side: chip etching, PCB design and CAD.",
       tags: ["Chip etching", "PCB design", "CAD"],
       art: "chip",
-      image: { src: "assets/chienlab-chip.jpg", alt: "Micrograph of a biosensor chip with bonding pads, electrodes, ADC and filter blocks.", caption: "Biosensor chip micrograph · image: Chien Lab", photo: true },
+      image: { src: "assets/chienlab-chip.jpg", alt: "Micrograph of a biosensor chip with bonding pads, electrodes, ADC and filter blocks.", caption: "Biosensor chip micrograph", photo: true },
     },
   ],
 

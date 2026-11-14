@@ -292,7 +292,7 @@ function projectWindow(p) {
   return `
   <article class="pw reveal" id="${slug(p.name)}" data-repo="${p.repo.replace("https://github.com/", "")}">
     <div class="pw__bar" aria-hidden="true"><i></i><i></i><i></i><span>${esc(p.repo.split("/").pop())}</span></div>
-    <div class="pw__media${v.type === "image" ? "" : " pw__media--print"}">${media}${v.credit ? `<a class="pw__credit" href="${v.credit.url}" target="_blank" rel="noopener">Photo: ${esc(v.credit.by)} · ${esc(v.credit.license)}</a>` : ""}</div>
+    <div class="pw__media${v.type === "image" ? "" : " pw__media--print"}">${media}</div>
     <div class="pw__body">
       <h3 class="pw__name">${esc(p.name)}</h3>
       <p class="pw__line">${esc(p.oneLine)}</p>
@@ -351,7 +351,6 @@ function hobbyTile(h) {
     ${h.photo ? `
     <figure class="rs__media hobby__photo">
       <img class="rs__photo" src="${h.photo.src}" alt="${esc(h.photo.alt)}" loading="lazy" decoding="async" />
-      <figcaption><a href="${h.photo.url}" target="_blank" rel="noopener">Photo: ${esc(h.photo.by)} · ${esc(h.photo.license)}</a></figcaption>
     </figure>` : `<div class="hobby__art"><svg viewBox="0 0 320 180" aria-hidden="true">${HOBBY_ART[h.art]?.() || ""}</svg></div>`}
   </article>`;
 }
