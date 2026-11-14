@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jiacheng Liang</title>
+  <meta name="description" content="Jiacheng Liang, Electrical and Computer Engineering at UC Berkeley. Machine learning and systems: LLM agents for robot training, models next to real hardware, and fault-tolerant infrastructure." />
+  <meta property="og:title" content="Jiacheng Liang" />
+  <meta property="og:description" content="Machine learning and systems, built for the real world." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%231d1d1f' stroke-width='2' fill='%23fff'%3E%3Cpath d='M8 9L24 16M8 23L24 16' fill='none'/%3E%3Ccircle cx='8' cy='9' r='4'/%3E%3Ccircle cx='8' cy='23' r='4'/%3E%3C/g%3E%3Ccircle cx='24' cy='16' r='5' fill='%230071e3'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    // pick the theme before first paint: saved choice, else the system setting
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t !== "dark" && t !== "light") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__logo" href="#top" aria-label="Jiacheng Liang, back to top">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 9L24 16M8 23L24 16" /><circle cx="8" cy="9" r="3.5" /><circle cx="8" cy="23" r="3.5" /><circle class="hot" cx="24" cy="16" r="4.5" /></svg>
+      </a>
+      <nav class="nav__links" id="navLinks" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#work">Work</a>
+        <a href="#ask">Ask</a>
+        <a href="#cv" data-cv>CV</a>
+      </nav>
+      <div class="nav__tools">
+        <button class="lossbar" id="lossbar" type="button" aria-label="Open the training lab" title="Open the training lab (T)">
+          <svg viewBox="0 0 38 14" aria-hidden="true"><path class="lossbar__track" id="lossTrack" /><path class="lossbar__line" id="lossLine" /><circle class="lossbar__dot" id="lossDot" r="1.8" /></svg>
+          <span class="lossbar__val" aria-hidden="true"><span class="lossbar__label">loss </span><span id="lossVal">2.48</span></span>
+        </button>
+        <button class="mswitch" id="themeSwitch" type="button" role="switch" aria-checked="false" aria-label="Dark mode" title="Switch model: light / dark">
+          <svg viewBox="0 0 38 22" aria-hidden="true"><path class="mswitch__edge" d="M11 11H27" /><circle class="mswitch__a" cx="27" cy="11" r="3.2" /><circle class="mswitch__knob" cx="11" cy="11" r="7.5" /><circle class="mswitch__core" cx="11" cy="11" r="3" /></svg>
+        </button>
+      </div>
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Section indicator drawn as a column of neurons (wide screens) -->
+  <nav class="fp" id="fp" aria-label="Page sections"></nav>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="tile tile--white hero" id="top" data-fp="Intro">
+      <div class="tile__text">
+        <h1 class="hero__headline reveal" id="heroHeadline"></h1>
+        <p class="hero__keys reveal" id="heroKeys"></p>
+        <div class="ctas reveal" id="heroCtas"></div>
+      </div>
+      <div class="hero__stage reveal">
+        <canvas id="net" class="hero__net" aria-label="An animated neural network. Click it, or press T, to open a lab where you can train one yourself." role="button"></canvas>
+        <span class="hero__hint" id="heroHint" aria-hidden="true"><i></i>Click to train me</span>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="tile tile--gray" id="about" data-fp="About" data-ambient="kmeans" data-ambient-quiet=".prose">
+      <div class="tile__text">
+        <p class="layer reveal" data-layer="about"></p>
+        <h2 class="headline reveal" data-copy="aboutHead.headline"></h2>
+        <p class="subhead reveal" data-copy="aboutHead.subhead"></p>
+      </div>
+      <div class="grid grid--2 reveal" id="facts"></div>
+      <div class="prose reveal" id="aboutText"></div>
+    </section>
+
+    <!-- Experience -->
+    <section class="tile tile--white" id="experience" data-fp="Experience" data-ambient="landscape">
+      <div class="tile__text">
+        <p class="layer reveal" data-layer="experience"></p>
+        <h2 class="headline reveal" data-copy="experienceHead.headline"></h2>
+        <p class="subhead reveal" data-copy="experienceHead.subhead"></p>
+      </div>
+      <div class="roles" id="roles"></div>
+    </section>
+
+    <!-- Work: projects / research / hobbies tabs -->
+    <section class="tile tile--gray work" id="work" data-fp="Work" data-ambient="conv">
+      <div class="tile__text">
+        <p class="layer reveal" data-layer="work"></p>
+        <h2 class="headline reveal" data-copy="workHead.headline"></h2>
+        <p class="subhead reveal" data-copy="workHead.subhead"></p>
+      </div>
+      <div class="tabs reveal" role="tablist" aria-label="Work" id="tabs">
+        <span class="tabs__pill" aria-hidden="true"></span>
+        <button class="tabs__tab" role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="true" data-tab="projects">Projects</button>
+        <button class="tabs__tab" role="tab" id="tab-research" aria-controls="panel-research" aria-selected="false" tabindex="-1" data-tab="research">Research</button>
+        <button class="tabs__tab" role="tab" id="tab-hobbies" aria-controls="panel-hobbies" aria-selected="false" tabindex="-1" data-tab="hobbies">Hobbies</button>
+      </div>
+      <div class="tabpanel" role="tabpanel" id="panel-projects" aria-labelledby="tab-projects" tabindex="0"></div>
+      <div class="tabpanel" role="tabpanel" id="panel-research" aria-labelledby="tab-research" tabindex="0" hidden></div>
+      <div class="tabpanel" role="tabpanel" id="panel-hobbies" aria-labelledby="tab-hobbies" tabindex="0" hidden></div>
+    </section>
+
+    <!-- Ask -->
+    <section class="tile tile--black" id="ask" data-fp="Ask" data-dark data-ambient="attention" data-ambient-quiet=".chat">
+      <div class="tile__text">
+        <p class="layer reveal" data-layer="ask"></p>
+        <h2 class="headline reveal" data-copy="chatHead.headline"></h2>
+        <p class="subhead reveal" data-copy="chatHead.subhead"></p>
+      </div>
+      <div class="chat reveal">
+        <div class="chat__log" id="chatLog" aria-live="polite"></div>
+        <div class="chat__chips" id="chatChips"></div>
+        <form class="chat__form" id="chatForm" autocomplete="off">
+          <label class="sr" for="chatInput">Your question</label>
+          <input id="chatInput" maxlength="500" placeholder="Ask a question" />
+          <button type="submit" class="nb" id="chatSend"><svg class="nb__g" viewBox="0 0 26 12" aria-hidden="true"><path class="nb__e" d="M4 6H21"/><circle class="nb__in" cx="4" cy="6" r="2.4"/><circle class="nb__out" cx="21" cy="6" r="3"/><circle class="nb__spark" cx="4" cy="6" r="1.6"/></svg><span>Send</span></button>
+        </form>
+        <p class="chat__mode" id="chatMode"></p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="tile tile--white contact" id="contact" data-fp="Contact">
+      <div class="tile__text">
+        <p class="layer reveal" data-layer="contact"></p>
+        <h2 class="headline headline--xl reveal" data-copy="contactHead.headline"></h2>
+        <p class="subhead reveal" data-copy="contactHead.subhead"></p>
+        <div class="ctas reveal" id="contactCtas"></div>
+      </div>
+      <div class="contact__stage reveal">
+        <canvas id="netOut" class="contact__net" aria-hidden="true"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__cols" id="footerCols"></div>
+      <div class="footer__bottom">
+        <span>Copyright © <span id="year"></span> Jiacheng Liang.</span>
+        <span>Berkeley, California</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Hidden feature: the training lab opens as an overlay (hero network click, T key, nav loss readout, #train) -->
+  <div class="labx" id="labx" role="dialog" aria-modal="true" aria-labelledby="labxTitle" hidden>
+    <div class="labx__panel tile--white">
+      <button class="labx__close" id="labxClose" type="button" aria-label="Close the training lab">
+        <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2L12 12M12 2L2 12" /></svg>
+      </button>
+      <div class="labx__head">
+        <p class="layer reveal" data-layer="lab"></p>
+        <h2 class="headline" id="labxTitle" data-copy="labHead.headline"></h2>
+        <p class="subhead" data-copy="labHead.subhead"></p>
+      </div>
+      <div class="lab">
+        <div class="lab__plot">
+          <canvas id="labCanvas" aria-label="Training plot. Click or drag to add points; the network's decision boundary updates as it trains." role="img"></canvas>
+          <p class="lab__hint" id="labHint">Click or drag to add points · Shift adds the other class</p>
+        </div>
+        <div class="lab__side">
+          <div class="lab__box">
+            <p class="lab__k">Add points as</p>
+            <div class="seg" role="group" aria-label="Class to add">
+              <button type="button" data-class="1" aria-pressed="true"><span class="dot dot--1"></span>Class A</button>
+              <button type="button" data-class="0" aria-pressed="false"><span class="dot dot--0"></span>Class B</button>
+            </div>
+            <p class="lab__k" style="margin-top:18px">Or start from a dataset</p>
+            <div class="seg" role="group" aria-label="Dataset">
+              <button type="button" data-set="moons" aria-pressed="true">Moons</button>
+              <button type="button" data-set="rings" aria-pressed="false">Rings</button>
+              <button type="button" data-set="xor" aria-pressed="false">XOR</button>
+              <button type="button" data-set="spiral" aria-pressed="false">Spiral</button>
+            </div>
+          </div>
+          <div class="lab__box">
+            <div class="lab__stats" aria-live="off">
+              <div class="lab__stat"><b id="labLoss">–</b><span>loss</span></div>
+              <div class="lab__stat"><b id="labAcc">–</b><span>accuracy</span></div>
+              <div class="lab__stat"><b id="labSteps">0</b><span>steps</span></div>
+            </div>
+            <svg class="lab__spark" id="labSpark" viewBox="0 0 200 96" preserveAspectRatio="none" aria-hidden="true"><path class="lab__sparkbase" d="M0 92H200" /><path class="lab__sparkline" /></svg>
+          </div>
+          <div class="lab__box">
+            <p class="lab__k">Weights, live</p>
+            <svg class="lab__net" id="labNet" viewBox="0 0 200 96" aria-hidden="true"></svg>
+            <p class="lab__arch">2 → 12 → 12 → 1 · tanh · Adam. Six of each hidden layer's twelve neurons are drawn; blue weights are positive.</p>
+          </div>
+          <div class="lab__actions">
+            <button type="button" id="labReset">Reset weights</button>
+            <button type="button" id="labClear">Clear points</button>
+          </div>
+        </div>
+      </div>
+      <p class="labx__foot">Esc to close · press T anywhere on the page to come back</p>
+    </div>
+  </div>
+
+  <div class="hintpill" id="labHintPill" role="status" hidden>
+    <svg class="hintpill__ico" viewBox="0 0 30 18" aria-hidden="true"><path d="M4 5L15 9M4 13L15 9M15 9L26 9" /><circle cx="4" cy="5" r="2.4" /><circle cx="4" cy="13" r="2.4" /><circle cx="15" cy="9" r="2.4" /><circle class="hot" cx="26" cy="9" r="2.8" /></svg>
+    <span class="hintpill__text"></span>
+    <button class="hintpill__try" type="button" data-try>Try it</button>
+    <button class="hintpill__x" type="button" data-dismiss aria-label="Dismiss"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3L11 11M11 3L3 11" /></svg></button>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

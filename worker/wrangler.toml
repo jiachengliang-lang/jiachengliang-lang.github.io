@@ -1,0 +1,10 @@
+name = "ask-jiacheng"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# Comma-separated list of sites allowed to call this Worker.
+ALLOWED_ORIGINS = "https://jiachengliang-lang.github.io,http://localhost:4321"
+
+# The API key is a secret, not a var:  npx wrangler secret put ANTHROPIC_API_KEY
