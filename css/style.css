@@ -1070,6 +1070,24 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: -
   .footer__col a { padding: 10px 0; }
 }
 
+/* ---------- full-screen hero ---------- */
+.hero { min-height: calc(100vh - 44px); min-height: calc(100svh - 44px); display: flex; flex-direction: column; padding-bottom: 0; }
+.hero .tile__text { flex: none; width: 100%; }
+.hero .hero__stage { flex: 1 1 auto; height: auto; min-height: 170px; max-height: none; margin-top: 16px; }
+.hero .hero__net { position: absolute; inset: 0 0 46px 0; width: 100%; height: calc(100% - 46px); }
+.hero__cue {
+  position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 3;
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px;
+  font-family: var(--mono); font-size: 12px; color: var(--text-2); text-decoration: none;
+  transition: opacity .4s var(--ease), color .2s var(--ease);
+}
+.hero__cue:hover { color: var(--text); text-decoration: none; }
+.hero__cue svg { width: 10px; height: 15px; animation: cue 2.2s var(--ease) infinite; }
+.hero__cue path { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.hero__cue.is-gone { opacity: 0; pointer-events: none; }
+@keyframes cue { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(3px); } }
+@media (prefers-reduced-motion: reduce) { .hero__cue svg { animation: none; } }
+
 /* ---------- motion ---------- */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.is-in { opacity: 1; transform: none; }

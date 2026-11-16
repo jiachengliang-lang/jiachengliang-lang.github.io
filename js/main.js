@@ -67,6 +67,15 @@ function setupCvRequest() {
   }, true);
 }
 
+/* ---------- hero scroll cue: fades once the visitor starts scrolling ---------- */
+function setupCue() {
+  const cue = document.getElementById("heroCue");
+  if (!cue) return;
+  const update = () => cue.classList.toggle("is-gone", scrollY > 40);
+  addEventListener("scroll", update, { passive: true });
+  update();
+}
+
 /* ---------- tactile feedback: a short buzz, a micro-shake and a firing ring ---------- */
 const BUZZ = ".nb, .tabs__tab, .mswitch, .seg button, .chip, .lossbar, .hintpill__try, .labx__close, .lab__actions button, .fp__node, .nav__logo";
 function setupHaptics() {
@@ -604,7 +613,7 @@ function setupIndicator() {
   const navLinks = $$(".nav__links a[href^='#']");
   const markNav = (id) => {
     const tab = $(".tabs__tab[aria-selected='true']")?.dataset.tab;
-    const want = id === "work" && tab === "experience" ? "experience" : id;
+    const want = id;
     navLinks.forEach((a) => a.classList.toggle("is-active", a.getAttribute("href") === `#${want}`));
   };
   $$(".tabs__tab").forEach((t) => t.addEventListener("click", () => current >= 0 && markNav(sections[current].id)));
@@ -654,6 +663,7 @@ setupTabs();
 setupLinks();
 setupTheme();
 setupEmailCopy();
+setupCue();
 setupCvRequest();
 setupHaptics();
 setupGenerate();
