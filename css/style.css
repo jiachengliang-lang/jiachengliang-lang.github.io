@@ -1058,16 +1058,10 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: -
   .gh__activity--split { grid-template-columns: 1fr; }
   .gh__activity--split .gc__svg { margin: 0 auto; }
 }
-/* hero: a shorter band so About peeks into the first screen */
-.hero__stage { height: clamp(180px, 23vh, 260px); }
-/* VERA print sits on a dark panel, beside the dark chip photo, in both themes */
-.rs__media:not(.rs__media--photo), :root[data-theme="dark"] .rs__media:not(.rs__media--photo) { background: #161618; }
-.rs__media:not(.rs__media--photo) figcaption, :root[data-theme="dark"] .rs__media:not(.rs__media--photo) figcaption { color: #f5f5f7; background: rgba(0, 0, 0, .45); }
 /* footer links: taller tap targets */
 .footer__col a { margin-bottom: 0; padding: 7px 0; }
 .xp__cta .more, .gh__side .more { display: inline-block; padding: 4px 0; }
 @media (max-width: 734px) {
-  .hero .hero__stage { height: 250px; }
   .hero__keys { flex-wrap: wrap; font-size: 13px; gap: 4px 10px; padding: 0 16px; }
   .hero__keys .hero__edge { width: 14px; }
   /* third keyword drops to its own line, without a dangling connector */
