@@ -363,7 +363,8 @@ function render() {
   });
 
   $("#facts").innerHTML = SITE.facts.map(bigCard).join("");
-  $("#aboutText").innerHTML = SITE.about.map((p) => `<p>${esc(p)}</p>`).join("");
+  const inlineLinks = (t) => esc(t).replace(/\[([^\]]+)\]\((#[\w-]+)\)/g, '<a href="$2">$1</a>');
+  $("#aboutText").innerHTML = SITE.about.map((p) => `<p>${inlineLinks(p)}</p>`).join("");
   $("#panel-experience").innerHTML = `<ol class="card xp reveal">${SITE.experience.map((e, i) => roleRow(e, i)).join("")}</ol><div class="ctas xp__cta reveal"><a class="more" href="${SITE.links.cv}">Ask for my full CV</a></div>`;
   $("#panel-projects").innerHTML = `<div class="pws">${SITE.projects.map(projectWindow).join("")}</div>
     <div class="gh reveal" id="ghBody"><div class="card gh__activity" id="ghActivity" hidden></div><p class="gh__note" id="ghNote"></p></div>`;

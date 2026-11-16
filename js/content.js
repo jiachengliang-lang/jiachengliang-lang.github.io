@@ -45,9 +45,11 @@ export const SITE = {
     ["languages", "English, Mandarin Chinese (bilingual)"],
     ["currently", "real-time imaging @ VOILA · teaching CS 61C"],
   ],
+  // [text](#id) becomes an in-page link
   about: [
-    "I'm an Electrical and Computer Engineering student at UC Berkeley. I like the part of machine learning where models meet the real world: noisy sensors, live camera frames, robots that find loopholes in their reward functions, and hardware that only fails when it's plugged in.",
-    "This past summer I built physics-based simulation and prediction models for a bioprocess team at TerraNova Bio. Now I write real-time imaging software for an eye scanner at Berkeley's VOILA lab and teach Machine Structures (CS 61C) to 100+ students.",
+    "Hi, I'm Jiacheng, an Electrical and Computer Engineering student at UC Berkeley with a deep passion for software development and machine learning.",
+    "I'm currently designing software for an optometry lab and researching with a few labs around campus. Lately I've also fallen for robotics, because nothing beats watching code you wrote actually move (or confidently fall over). You can find my recent work [here](#work).",
+    "Outside of school, you can find me hooping in the gym, running on the most random tracks, or watching Warriors games with a Diet Coke in hand. I also grind LeetCode, a hobby that has taught me more about the words “Wrong Answer” than any class ever could.",
   ],
 
   experienceHead: {

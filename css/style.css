@@ -1025,6 +1025,10 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: -
 .hobby__text { padding-bottom: 22px; }
 @media (max-width: 734px) { .hobby .card__label, .rs__sum, .pw__line { font-size: 17px; } }
 
+/* about paragraphs: same reading face as the cards, in ink */
+.prose p:not(:first-child) { font-family: var(--text-serif); font-size: 20px; line-height: 1.55; letter-spacing: -0.003em; color: var(--text); text-wrap: pretty; }
+@media (max-width: 734px) { .prose p:not(:first-child) { font-size: 18px; } }
+
 /* ---------- motion ---------- */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.is-in { opacity: 1; transform: none; }

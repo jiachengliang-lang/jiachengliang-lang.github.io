@@ -16,7 +16,7 @@ function profileText() {
   lines.push(`Name: ${SITE.name}`, `Tagline: ${SITE.tagline}`, `Intro: ${SITE.intro}`, "");
   lines.push("MODEL CARD");
   SITE.modelCard.forEach(([k, v]) => lines.push(`- ${k}: ${v}`));
-  lines.push("", "ABOUT", ...SITE.about, "");
+  lines.push("", "ABOUT", ...SITE.about.map((p) => p.replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")), "");
   lines.push("EXPERIENCE");
   SITE.experience.forEach((e) => {
     lines.push(`## ${e.org} — ${e.role} (${e.dates}, ${e.place})`, e.summary);
