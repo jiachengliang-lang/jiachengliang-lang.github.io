@@ -41,6 +41,7 @@ async function load(user) {
   }
 }
 
+const fullMonth = (m) => ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][m];
 const fmtDay = (iso) => {
   const [y, m, d] = iso.split("-").map(Number);
   return `${MONTHS[m - 1]} ${d}, ${y}`;
@@ -75,7 +76,8 @@ function calendar(days, weeks) {
     });
   });
   const dayLabels = [[1, "Mon"], [3, "Wed"], [5, "Fri"]].map(([r, t]) => `<text class="gc__lbl" x="0" y="${top + r * S + 9}">${t}</text>`).join("");
-  return `<svg class="gc__svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Contribution calendar for the last ${cols.length} weeks">${months}${dayLabels}${rects}</svg>`;
+  // a short span draws larger squares, but never more than about 1.8x GitHub's size
+  return `<svg class="gc__svg" viewBox="0 0 ${W} ${H}" style="max-width:${Math.round(W * 1.8)}px" role="img" aria-label="Contribution calendar for the last ${cols.length} weeks">${months}${dayLabels}${rects}</svg>`;
 }
 
 export async function startGitHub(cfg) {
@@ -85,12 +87,22 @@ export async function startGitHub(cfg) {
   try { data = await load(cfg.user); } catch { data = null; }
   if (!data) return;                                          // the graph is a bonus; leave it out quietly
 
+  // start the grid at the week of the first contribution, so a young account
+  // doesn't show months of empty squares; fall back to the full year otherwise
+  const firstIdx = data.days.findIndex((d) => d[1] > 0);
+  let sinceWeeks = 53, sinceLabel = "in the last year";
+  if (firstIdx > 0) {
+    const first = new Date(data.days[firstIdx][0] + "T00:00:00Z");
+    const last = new Date(data.days[data.days.length - 1][0] + "T00:00:00Z");
+    const span = Math.ceil(((last - first) / 864e5 + first.getUTCDay() + 1) / 7);
+    if (span < 48) { sinceWeeks = span; sinceLabel = `since ${fullMonth(first.getUTCMonth())}`; }
+  }
   const narrow = matchMedia("(max-width: 734px)");
   const render = () => {
-    const weeks = narrow.matches ? 22 : 53;
+    const weeks = Math.min(sinceWeeks, narrow.matches ? 22 : 53);
     box.innerHTML = `
       <div class="gh__head">
-        <div><b class="gh__big">${data.total}</b><span class="gh__lbl">contributions on GitHub in the last year</span></div>
+        <div><b class="gh__big">${data.total}</b><span class="gh__lbl">contributions on GitHub ${sinceLabel}</span></div>
         <div class="gh__side"><span class="gh__live"><i></i>live from GitHub</span><a class="more" href="https://github.com/${cfg.user}" target="_blank" rel="noopener">See profile</a></div>
       </div>
       <div class="gc">${calendar(data.days, weeks)}</div>

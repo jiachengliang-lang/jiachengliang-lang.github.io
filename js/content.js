@@ -7,7 +7,7 @@ export const SITE = {
 
   hero: {
     headline: "Jiacheng Liang",
-    keywords: ["Software Engineer", "Machine Learning"],
+    keywords: ["Software Engineer", "Machine Learning", "UC Berkeley"],
     // one line of proof under the name; {name} pieces become links
     proof: "Building real-time imaging software at Berkeley's VOILA lab and AI for VERA, a robotic face, at Berkeley AI Research.",
     shipped: [["Rewardsmith", "#rewardsmith"], ["Vault", "#vault"], ["Yellow Brawl", "#yellow-brawl"]],
@@ -30,11 +30,10 @@ export const SITE = {
 
   aboutHead: {
     headline: "Trained at UC Berkeley.",
-    subhead: "",
+    subhead: "From Toronto, Canada.",
   },
   facts: [
-    { kicker: "Major", big: "Electrical and Computer Engineering", label: "", count: false, wide: true },
-    { kicker: "From", big: "Toronto, Canada", label: "", count: false, wide: true },
+
   ],
   // Used by the chat backend.
   modelCard: [

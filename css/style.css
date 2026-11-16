@@ -971,7 +971,7 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: -
 
 /* ---------- contribution graph ---------- */
 .gc { margin-top: 6px; }
-.gc__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.gc__svg { display: block; width: 100%; height: auto; overflow: visible; margin: 0 auto; }
 .gc__lbl { font: 400 9px var(--mono); fill: var(--text-2); }
 .gc__c { transform-box: fill-box; transform-origin: center; transform: scale(.4); opacity: 0;
   transition: transform .5s cubic-bezier(.2, .8, .2, 1), opacity .5s var(--ease); transition-delay: var(--d); }
@@ -1005,8 +1005,8 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: -
 .tile--black .layer { color: var(--on-dark); }
 .tile--black .layer__joke { color: var(--text-3); }
 @media (max-width: 734px) {
-  .hero__keys { padding: 0 12px; flex-wrap: nowrap; font-size: 13px; gap: 10px; letter-spacing: 0; }
-  .hero__keys .hero__edge { width: 16px; flex: none; }
+  .hero__keys { padding: 0 12px; flex-wrap: nowrap; font-size: 11px; gap: 6px; letter-spacing: 0; }
+  .hero__keys .hero__edge { width: 10px; flex: none; }
   .hero__proof { padding: 0 16px; font-size: 18px; }
   .hero__stage { height: 230px; }
 }
@@ -1031,6 +1031,9 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: -
 
 .gh--shared { margin-top: 56px; }
 @media (max-width: 734px) { .gh--shared { margin-top: 40px; } }
+
+#facts:empty { display: none; }
+#about .prose { margin-top: 18px; }
 
 /* ---------- motion ---------- */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
