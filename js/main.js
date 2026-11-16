@@ -365,8 +365,7 @@ function render() {
   const inlineLinks = (t) => esc(t).replace(/\[([^\]]+)\]\((#[\w-]+)\)/g, '<a href="$2">$1</a>');
   $("#aboutText").innerHTML = SITE.about.map((p) => `<p>${inlineLinks(p)}</p>`).join("");
   $("#panel-experience").innerHTML = `<ol class="card xp reveal">${SITE.experience.map((e, i) => roleRow(e, i)).join("")}</ol><div class="ctas xp__cta reveal"><a class="more" href="${SITE.links.cv}">Ask for my full CV</a></div>`;
-  $("#panel-projects").innerHTML = `<div class="pws">${SITE.projects.map(projectWindow).join("")}</div>
-    <div class="gh reveal" id="ghBody"><div class="card gh__activity" id="ghActivity" hidden></div><p class="gh__note" id="ghNote"></p></div>`;
+  $("#panel-projects").innerHTML = `<div class="pws">${SITE.projects.map(projectWindow).join("")}</div>`;
   $("#panel-research").innerHTML = `<div class="grid grid--2 grid--wide">${SITE.research.map(researchCard).join("")}</div>`;
   $("#panel-hobbies").innerHTML = `<div class="grid grid--2 grid--wide">${SITE.hobbies.map(hobbyTile).join("")}</div>`;
   $("#contactCtas").innerHTML = mlButton(L.email, "Email me", { copy: L.emailText }) + mlButton(L.linkedin, "LinkedIn", { ghost: true, ext: true });
