@@ -1035,6 +1035,18 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: -
 #facts:empty { display: none; }
 #about .prose { margin-top: 18px; }
 
+/* ---------- about: portrait beside the description ---------- */
+.about { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 56px; align-items: start; max-width: 1080px; margin: 18px auto 0; text-align: left; }
+.about .prose { margin: 0; max-width: 640px; }
+#about .about .prose { margin-top: 0; }
+.about__photo { display: block; border-radius: 22px; overflow: hidden; background: var(--tile-on-gray); }
+.about__photo img { display: block; width: 100%; height: auto; }
+@media (max-width: 1068px) { .about { grid-template-columns: 280px minmax(0, 1fr); gap: 40px; } }
+@media (max-width: 734px) {
+  .about { grid-template-columns: 1fr; gap: 28px; }
+  .about__photo { width: min(100%, 300px); margin: 0 auto; border-radius: 18px; }
+}
+
 /* ---------- motion ---------- */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.is-in { opacity: 1; transform: none; }

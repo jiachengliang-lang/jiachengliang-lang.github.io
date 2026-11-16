@@ -71,13 +71,19 @@
     </section>
 
     <!-- About -->
-    <section class="tile tile--gray" id="about" data-fp="About" data-ambient="kmeans" data-ambient-quiet=".prose, .tile__text, #facts">
+    <section class="tile tile--gray" id="about" data-fp="About" data-ambient="kmeans" data-ambient-quiet=".about, .tile__text">
       <div class="tile__text">
         <p class="layer reveal" data-layer="about"></p>
         <h2 class="sr">About</h2>
       </div>
       <div class="grid grid--2 reveal" id="facts"></div>
-      <div class="prose reveal" id="aboutText"></div>
+      <div class="about reveal">
+        <picture class="about__photo">
+          <source media="(max-width: 734px)" srcset="assets/portrait-square.jpg" />
+          <img src="assets/portrait.jpg" srcset="assets/portrait.jpg 720w, assets/portrait@2x.jpg 1080w" sizes="(max-width: 1068px) 280px, 340px" alt="Jiacheng Liang in a blue blazer on the UC Berkeley campus, with the Campanile behind him." loading="lazy" decoding="async" width="720" height="900" />
+        </picture>
+        <div class="prose" id="aboutText"></div>
+      </div>
     </section>
 
     <!-- Work: projects / research / hobbies tabs -->

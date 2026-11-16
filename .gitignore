@@ -3,3 +3,6 @@ node_modules/
 worker/.dev.vars
 worker/.wrangler/
 worker/dist/
+
+# original full-size photo stays local; the site uses the web-sized portrait*.jpg
+assets/Image_*.jpg
