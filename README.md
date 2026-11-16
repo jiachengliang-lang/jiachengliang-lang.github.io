@@ -13,7 +13,7 @@ js/ambient.js       animated section backgrounds: k-means, loss-surface optimize
 js/train.js         "Train one yourself" lab: a 2-12-12-1 network trained live with Adam
 js/lab.js           opens the lab as a hidden overlay: hero network click, T key, nav loss readout, #train
 js/github.js        contribution graph from the GitHub profile (via github-contributions-api.jogruber.de)
-js/chat.js          "Ask about me" chat (live via the Worker, or offline keyword search)
+js/chat.js          "Ask about me" chat (currently not on the page; kept for later)
 assets/             project, research and hobby images
 worker/             Cloudflare Worker that answers chat questions with Claude
 ```

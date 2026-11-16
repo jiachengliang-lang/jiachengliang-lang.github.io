@@ -7,7 +7,10 @@ export const SITE = {
 
   hero: {
     headline: "Jiacheng Liang",
-    keywords: ["Software engineer", "Machine learning", "Berkeley"],
+    keywords: ["Software Engineer", "Machine Learning"],
+    // one line of proof under the name; {name} pieces become links
+    proof: "Building real-time imaging software at Berkeley's VOILA lab and AI for VERA, a robotic face, at Berkeley AI Research.",
+    shipped: [["Rewardsmith", "#rewardsmith"], ["Vault", "#vault"], ["Yellow Brawl", "#yellow-brawl"]],
   },
   intro:
     "I build machine-learning systems that have to work outside a notebook: models running next to real hardware, LLM agents that train robots, and the infrastructure that keeps them correct when things fail.",
@@ -26,12 +29,12 @@ export const SITE = {
   chatEndpoint: "",
 
   aboutHead: {
-    headline: "Trained at Berkeley.",
+    headline: "Trained at UC Berkeley.",
     subhead: "",
   },
   facts: [
-    { kicker: "Major", big: "Electrical and Computer Engineering", label: "B.S. · UC Berkeley", count: false, wide: true },
-    { kicker: "Graduating", big: "May 2028", label: "Expected", count: false },
+    { kicker: "Major", big: "Electrical and Computer Engineering", label: "", count: false, wide: true },
+    { kicker: "From", big: "Toronto, Canada", label: "", count: false, wide: true },
   ],
   // Used by the chat backend.
   modelCard: [
@@ -58,7 +61,7 @@ export const SITE = {
       role: "Software Engineer Intern",
       dates: "Aug. 2026 – Present",
       place: "Berkeley, CA",
-      summary: "I write the real-time C++/Qt software behind a low-cost eye scanner that tracks myopia, from live camera frames to images that calibrate themselves.",
+      summary: "I build real-time C++/Qt imaging software for a low-cost eye scanner that tracks myopia.",
       metrics: [
         { big: "0.16%", label: "frame loss, measured on hardware" },
         { big: "74%", label: "sharper axial images, on simulated test data" },
@@ -76,7 +79,7 @@ export const SITE = {
       role: "Software Engineer Intern",
       dates: "May 2026 – Aug. 2026",
       place: "Berkeley, CA",
-      summary: "I replaced random test data with a physics-based simulator, then built models that predict expensive lab measurements from cheap sensors, and ran them on real hardware.",
+      summary: "I built a physics-based simulator and models that predict lab measurements from cheap sensors.",
       metrics: [
         { big: "R² 0.86–0.99", label: "on batches held out from training" },
         { big: "5 from 7", label: "expensive lab measurements predicted from cheap sensors" },
@@ -95,7 +98,7 @@ export const SITE = {
       role: "Academic Intern (Teaching)",
       dates: "Aug. 2026 – Present",
       place: "Berkeley, CA",
-      summary: "I teach 100+ students how a computer actually runs code, from C and RISC-V down to the datapath, in discussion sections and office hours.",
+      summary: "I teach C, RISC-V and machine structures to 100+ students.",
       metrics: [{ big: "100+", label: "students in discussion sections and office hours" }],
       bullets: [
         "Host biweekly discussion sections and office hours for 100+ students, teaching topics like C, RISC-V, assembly, datapath, memory, and parallelism",
@@ -188,7 +191,7 @@ export const SITE = {
 
   workHead: {
     headline: "Things I've built.",
-    subhead: "Projects, research, and what I do for fun.",
+    subhead: "Experience, projects, research, and what I do for fun.",
   },
 
   research: [
@@ -251,14 +254,14 @@ export const SITE = {
 
   // Small labels above each section headline; the page reads like a forward pass.
   layers: {
-    about: "Input layer",
-    experience: "Hidden layer 1",
-    work: "Hidden layer 2",
+    about: ["About", "input layer"],
+    experience: ["Experience", "hidden layer 1"],
+    work: ["Work", "hidden layers"],
     code: "Commit log",
-    lab: "Backpropagation",
+    lab: ["Train", "backpropagation"],
     skills: "Weights",
-    ask: "Inference",
-    contact: "Output",
+    ask: ["Ask", "inference"],
+    contact: ["Contact", "output"],
   },
 
   codeHead: {

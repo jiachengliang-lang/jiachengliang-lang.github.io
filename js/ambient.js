@@ -668,7 +668,7 @@ function makeLayer(section, index) {
     ctx.restore();
     // figure caption in the left gutter, like a plate in a paper; wraps to the space beside the content
     const avail = L.gutter - 40;
-    if (avail >= 110 && scene.caption) {
+    if (false && avail >= 110 && scene.caption) {   // figure captions retired: plain page, no jargon
       const base = view.y1 - 22;
       if (base < L.h - 40 && base > 200) {
         ctx.font = `11px ${FONT}`;

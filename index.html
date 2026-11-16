@@ -36,7 +36,6 @@
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#work">Work</a>
-        <a href="#ask">Ask</a>
         <a href="#cv" data-cv>CV</a>
       </nav>
       <div class="nav__tools">
@@ -72,7 +71,7 @@
     </section>
 
     <!-- About -->
-    <section class="tile tile--gray" id="about" data-fp="About" data-ambient="kmeans" data-ambient-quiet=".prose">
+    <section class="tile tile--gray" id="about" data-fp="About" data-ambient="kmeans" data-ambient-quiet=".prose, .tile__text, #facts">
       <div class="tile__text">
         <p class="layer reveal" data-layer="about"></p>
         <h2 class="headline reveal" data-copy="aboutHead.headline"></h2>
@@ -82,18 +81,8 @@
       <div class="prose reveal" id="aboutText"></div>
     </section>
 
-    <!-- Experience -->
-    <section class="tile tile--white" id="experience" data-fp="Experience" data-ambient="landscape">
-      <div class="tile__text">
-        <p class="layer reveal" data-layer="experience"></p>
-        <h2 class="headline reveal" data-copy="experienceHead.headline"></h2>
-        <p class="subhead reveal" data-copy="experienceHead.subhead"></p>
-      </div>
-      <div class="roles" id="roles"></div>
-    </section>
-
     <!-- Work: projects / research / hobbies tabs -->
-    <section class="tile tile--gray work" id="work" data-fp="Work" data-ambient="conv">
+    <section class="tile tile--white work" id="work" data-fp="Work">
       <div class="tile__text">
         <p class="layer reveal" data-layer="work"></p>
         <h2 class="headline reveal" data-copy="workHead.headline"></h2>
@@ -101,36 +90,19 @@
       </div>
       <div class="tabs reveal" role="tablist" aria-label="Work" id="tabs">
         <span class="tabs__pill" aria-hidden="true"></span>
-        <button class="tabs__tab" role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="true" data-tab="projects">Projects</button>
+        <button class="tabs__tab" role="tab" id="tab-experience" aria-controls="panel-experience" aria-selected="true" data-tab="experience">Experience</button>
+        <button class="tabs__tab" role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="false" tabindex="-1" data-tab="projects">Projects</button>
         <button class="tabs__tab" role="tab" id="tab-research" aria-controls="panel-research" aria-selected="false" tabindex="-1" data-tab="research">Research</button>
         <button class="tabs__tab" role="tab" id="tab-hobbies" aria-controls="panel-hobbies" aria-selected="false" tabindex="-1" data-tab="hobbies">Hobbies</button>
       </div>
-      <div class="tabpanel" role="tabpanel" id="panel-projects" aria-labelledby="tab-projects" tabindex="0"></div>
+      <div class="tabpanel" role="tabpanel" id="panel-experience" aria-labelledby="tab-experience" tabindex="0"></div>
+      <div class="tabpanel" role="tabpanel" id="panel-projects" aria-labelledby="tab-projects" tabindex="0" hidden></div>
       <div class="tabpanel" role="tabpanel" id="panel-research" aria-labelledby="tab-research" tabindex="0" hidden></div>
       <div class="tabpanel" role="tabpanel" id="panel-hobbies" aria-labelledby="tab-hobbies" tabindex="0" hidden></div>
     </section>
 
-    <!-- Ask -->
-    <section class="tile tile--black" id="ask" data-fp="Ask" data-dark data-ambient="attention" data-ambient-quiet=".chat">
-      <div class="tile__text">
-        <p class="layer reveal" data-layer="ask"></p>
-        <h2 class="headline reveal" data-copy="chatHead.headline"></h2>
-        <p class="subhead reveal" data-copy="chatHead.subhead"></p>
-      </div>
-      <div class="chat reveal">
-        <div class="chat__log" id="chatLog" aria-live="polite"></div>
-        <div class="chat__chips" id="chatChips"></div>
-        <form class="chat__form" id="chatForm" autocomplete="off">
-          <label class="sr" for="chatInput">Your question</label>
-          <input id="chatInput" maxlength="500" placeholder="Ask a question" />
-          <button type="submit" class="nb" id="chatSend"><svg class="nb__g" viewBox="0 0 26 12" aria-hidden="true"><path class="nb__e" d="M4 6H21"/><circle class="nb__in" cx="4" cy="6" r="2.4"/><circle class="nb__out" cx="21" cy="6" r="3"/><circle class="nb__spark" cx="4" cy="6" r="1.6"/></svg><span>Send</span></button>
-        </form>
-        <p class="chat__mode" id="chatMode"></p>
-      </div>
-    </section>
-
     <!-- Contact -->
-    <section class="tile tile--white contact" id="contact" data-fp="Contact">
+    <section class="tile tile--gray contact" id="contact" data-fp="Contact">
       <div class="tile__text">
         <p class="layer reveal" data-layer="contact"></p>
         <h2 class="headline headline--xl reveal" data-copy="contactHead.headline"></h2>

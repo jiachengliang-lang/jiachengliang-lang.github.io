@@ -1,6 +1,5 @@
 import { SITE } from "./content.js";
 import { startNet } from "./net.js";
-import { startChat } from "./chat.js";
 import { startAmbient } from "./ambient.js";
 import { startTrainer } from "./train.js";
 import { startGitHub } from "./github.js";
@@ -12,7 +11,7 @@ const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 const ext = 'target="_blank" rel="noopener"';
-const TABS = ["projects", "research", "hobbies"];
+const TABS = ["experience", "projects", "research", "hobbies"];
 
 /* ---------- small ML glyph: a 2-3-1 network that "fires" when shown ---------- */
 function glyph(cls = "") {
@@ -91,10 +90,9 @@ function setupHaptics() {
 /* ---------- pieces ---------- */
 const bigCard = (m) => `
   <div class="card card--metric${m.wide ? " card--wide" : ""}">
-    ${glyph("glyph--corner")}
     ${m.kicker ? `<p class="card__kicker">${esc(m.kicker)}</p>` : ""}
     <div class="card__big" ${m.count === false ? "data-nocount" : ""}>${esc(m.big)}</div>
-    <p class="card__label">${esc(m.label)}</p>
+    ${m.label ? `<p class="card__label">${esc(m.label)}</p>` : ""}
   </div>`;
 
 // key numbers inside bullets get an underline that draws itself in
@@ -187,7 +185,6 @@ function projectPanel(p, i) {
 function roleCard(e) {
   return `
   <article class="role reveal">
-    ${glyph("glyph--corner")}
     <div class="role__head">
       <h3 class="role__name">${esc(e.org)}</h3>
       <span class="role__when">${esc(e.dates)}</span>
@@ -241,7 +238,7 @@ function researchCard(r) {
   return `
   <article class="card rs reveal">
     <div class="rs__text">
-      <p class="hobby__meta">${esc(r.card.meta)}</p>
+      <p class="rs__meta">${esc(r.card.meta)}</p>
       <h3 class="card__title">${esc(r.title)}</h3>
       <p class="rs__sum">${esc(r.card.line)}</p>
       <a class="more rs__link" href="${r.link}" target="_blank" rel="noopener">Lab website</a>
@@ -280,7 +277,6 @@ function miniLoop() {
 }
 
 function projectWindow(p) {
-  const picks = (p.show || [0, 1]).map((i) => p.metrics[i]).filter(Boolean);
   const v = p.visual;
   const media = v.type === "image"
     ? `<img src="${v.src}" srcset="${v.srcset}" sizes="(max-width: 734px) 100vw, 380px" alt="${esc(v.alt)}" loading="lazy" decoding="async" />`
@@ -296,7 +292,6 @@ function projectWindow(p) {
     <div class="pw__body">
       <h3 class="pw__name">${esc(p.name)}</h3>
       <p class="pw__line">${esc(p.oneLine)}</p>
-      <div class="pw__nums">${picks.map((m) => `<div class="card--metric pw__num"><div class="card__big">${esc(m.big)}</div><p class="card__label">${esc(m.label)}</p></div>`).join("")}</div>
       <p class="pw__tags">${esc(p.tags.slice(0, 4).join(" · "))}</p>
       <div class="pw__links">${links}</div>
     </div>
@@ -343,7 +338,6 @@ function hobbyTile(h) {
   return `
   <article class="card hobby reveal">
     <div class="hobby__text">
-      <p class="hobby__meta">${esc(h.meta)}</p>
       <h3 class="card__title">${esc(h.title)}</h3>
       <p class="card__label">${esc(h.blurb)}</p>
     </div>
@@ -363,11 +357,14 @@ function render() {
   $("#heroCtas").innerHTML = mlButton("#contact", "Get in touch") + mlButton(L.cv, "Request CV", { ghost: true });
 
   $$("[data-copy]").forEach((el) => { const [k, f] = el.dataset.copy.split("."); el.textContent = SITE[k][f]; });
-  $$("[data-layer]").forEach((el) => { el.innerHTML = `${glyph()}<span>${esc(SITE.layers[el.dataset.layer])}</span>`; });
+  $$("[data-layer]").forEach((el) => {
+    const [word, joke] = SITE.layers[el.dataset.layer];
+    el.innerHTML = `<span class="layer__word">${esc(word)}</span><span class="layer__joke" aria-hidden="true"> · ${esc(joke)}</span>`;
+  });
 
   $("#facts").innerHTML = SITE.facts.map(bigCard).join("");
   $("#aboutText").innerHTML = SITE.about.map((p) => `<p>${esc(p)}</p>`).join("");
-  $("#roles").innerHTML = `<ol class="card xp reveal">${SITE.experience.map((e, i) => roleRow(e, i)).join("")}</ol><div class="ctas xp__cta reveal"><a class="more" href="${SITE.links.cv}">Ask for my full CV</a></div>`;
+  $("#panel-experience").innerHTML = `<ol class="card xp reveal">${SITE.experience.map((e, i) => roleRow(e, i)).join("")}</ol><div class="ctas xp__cta reveal"><a class="more" href="${SITE.links.cv}">Ask for my full CV</a></div>`;
   $("#panel-projects").innerHTML = `<div class="pws">${SITE.projects.map(projectWindow).join("")}</div>
     <div class="gh reveal" id="ghBody"><div class="card gh__activity" id="ghActivity" hidden></div><p class="gh__note" id="ghNote"></p></div>`;
   $("#panel-research").innerHTML = `<div class="grid grid--2 grid--wide">${SITE.research.map(researchCard).join("")}</div>`;
@@ -378,7 +375,7 @@ function render() {
   $("#footerCols").innerHTML = [
     col("Experience", SITE.experience.map((e) => `<a href="#experience">${esc(e.short)}</a>`)),
     col("Work", [...SITE.projects.map((p) => `<a href="#${slug(p.name)}">${esc(p.name)}</a>`), `<a href="#research">Research</a>`, `<a href="#hobbies">Hobbies</a>`]),
-    col("This site", [`<a href="#about">About</a>`, `<a href="#ask">Ask about my work</a>`, `<a href="#train">Train a model</a>`]),
+    col("This site", [`<a href="#about">About</a>`, `<a href="#train">Train a model</a>`]),
     col("Elsewhere", [
       `<a href="${L.email}">Email</a>`,
       `<a href="${L.linkedin}" ${ext}>LinkedIn</a>`,
@@ -608,7 +605,7 @@ function setupIndicator() {
   const navLinks = $$(".nav__links a[href^='#']");
   const markNav = (id) => {
     const tab = $(".tabs__tab[aria-selected='true']")?.dataset.tab;
-    const want = id;
+    const want = id === "work" && tab === "experience" ? "experience" : id;
     navLinks.forEach((a) => a.classList.toggle("is-active", a.getAttribute("href") === `#${want}`));
   };
   $$(".tabs__tab").forEach((t) => t.addEventListener("click", () => current >= 0 && markNav(sections[current].id)));
@@ -666,7 +663,6 @@ setupCounts();
 setupIndicator();
 startNet($("#net"), { reduceMotion, burst: true });
 startNet($("#netOut"), { reduceMotion, layers: [9, 7, 5, 3, 1], layersNarrow: [6, 5, 3, 2, 1], pad: [0.08, 0.92], rate: 0.6 });
-startChat(SITE);
 startAmbient({ reduceMotion });
 startTrainer({ reduceMotion });
 startLab({ reduceMotion });

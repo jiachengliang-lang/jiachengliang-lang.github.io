@@ -259,7 +259,7 @@ h1, h2, h3, p { margin: 0; }
 .contact { padding: 160px 22px; }
 
 /* ---------- footer ---------- */
-.footer { background: var(--gray); color: var(--text-2); font-size: 12px; line-height: 1.33; letter-spacing: -0.01em; }
+.footer { border-top: 1px solid var(--divider); background: var(--gray); color: var(--text-2); font-size: 12px; line-height: 1.33; letter-spacing: -0.01em; }
 .footer__inner { max-width: 980px; margin: 0 auto; padding: 32px 22px 22px; }
 .footer__cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--divider); }
 .footer__col h4 { margin: 0 0 10px; font-size: 12px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
@@ -637,7 +637,7 @@ html.labx-open, html.labx-open body { overflow: hidden; }
 
 /* ---------- projects: small windows ---------- */
 .pws { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; max-width: 1180px; margin: 0 auto; text-align: left; }
-.pw { background: var(--tile-on-gray); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; transition: transform .4s var(--ease), background-color .5s var(--ease); }
+.pw { background: var(--tile); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; transition: transform .4s var(--ease), background-color .5s var(--ease); }
 .pw:hover { transform: translateY(-4px); }
 .pw__bar { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px; font-size: 12px; color: var(--text-3); }
 .pw__bar i { width: 8px; height: 8px; border-radius: 50%; background: color-mix(in srgb, var(--text) 16%, transparent); }
@@ -990,6 +990,40 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: -
 .gc__legend .gc__c--3 { background: color-mix(in srgb, var(--blue) 78%, transparent); }
 .gc__legend .gc__c--4 { background: var(--blue); }
 @media (prefers-reduced-motion: reduce) { .gc__c { transform: none; opacity: 1; transition: none; } }
+
+/* ---------- critique fixes: hero proof, shorter band, quiet labels ---------- */
+.hero__proof {
+  max-width: 34em; margin: 26px auto 0; font-family: var(--text-serif); font-size: clamp(18px, 1.7vw, 21px);
+  line-height: 1.45; color: var(--text); text-wrap: balance;
+}
+.hero__shipped { display: block; margin-top: 8px; font-family: var(--font); font-size: 15px; color: var(--text-2); }
+.hero__shipped a { color: var(--link); }
+.hero .ctas { margin-top: 28px; }
+.hero__stage { height: clamp(220px, 32vh, 340px); margin-top: 20px; }
+.layer { display: inline-block; font-family: var(--font); font-size: 15px; font-weight: 500; letter-spacing: -0.01em; color: var(--text); margin-bottom: 10px; }
+.layer__joke { font-family: var(--mono); font-size: 12px; font-weight: 400; color: var(--text-2); letter-spacing: 0; }
+.tile--black .layer { color: var(--on-dark); }
+.tile--black .layer__joke { color: var(--text-3); }
+@media (max-width: 734px) {
+  .hero__keys { padding: 0 12px; flex-wrap: nowrap; font-size: 13px; gap: 10px; letter-spacing: 0; }
+  .hero__keys .hero__edge { width: 16px; flex: none; }
+  .hero__proof { padding: 0 16px; font-size: 18px; }
+  .hero__stage { height: 230px; }
+}
+
+.tabpanel .xp { max-width: var(--text-w); margin: 0 auto; text-align: left; }
+.tabpanel .xp__cta { margin-top: 22px; }
+
+/* ---------- card descriptions read like the experience list ---------- */
+.hobby .card__label, .rs__sum, .pw__line {
+  font-family: var(--text-serif); font-size: 19px; line-height: 1.45; letter-spacing: -0.003em;
+  color: var(--text); max-width: 34em; text-wrap: pretty;
+}
+.pw__line { font-size: 18px; margin-top: 8px; }
+.rs__meta { font-family: var(--mono); font-size: 12px; color: var(--text-2); margin-bottom: 6px; }
+.pw__tags { margin-top: 14px; }
+.hobby__text { padding-bottom: 22px; }
+@media (max-width: 734px) { .hobby .card__label, .rs__sum, .pw__line { font-size: 17px; } }
 
 /* ---------- motion ---------- */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
