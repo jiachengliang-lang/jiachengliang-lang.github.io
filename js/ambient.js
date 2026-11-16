@@ -8,7 +8,7 @@
 // The canvas is viewport-sized and sticky inside its section, so cost does not
 // grow with section height. Scenes draw in section ("world") coordinates.
 
-const FONT = '"Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace';
+const FONT = '"Fragment Mono", ui-monospace, SFMono-Regular, Menlo, monospace';
 const R = Math.random;
 const TAU = Math.PI * 2;
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));

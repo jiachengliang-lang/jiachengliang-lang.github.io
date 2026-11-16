@@ -21,13 +21,13 @@
   --pill-bg: #ffffff;
   color-scheme: light;
 
-  --font: "Geist", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font: "Schibsted Grotesk", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --serif: "Instrument Serif", "Iowan Old Style", Georgia, "Times New Roman", serif;
-  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --text-serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --mono: "Fragment Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --text-serif: "Spectral", "Iowan Old Style", Georgia, serif;
   --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
   --text-w: 980px;
-  /* type scale. Serif for display, Geist for reading, Geist Mono for details. */
+  /* type scale. Instrument Serif for display, Spectral for reading, Schibsted Grotesk for UI, Fragment Mono for details. */
   --fs-display-xl: clamp(60px, 9vw, 112px);
   --fs-display: clamp(48px, 6.2vw, 72px);
   --fs-title: clamp(28px, 2.6vw, 34px);
@@ -729,7 +729,7 @@ html.labx-open, html.labx-open body { overflow: hidden; }
 @media (max-width: 734px) { .rs__text { padding: 28px 24px 6px; } }
 
 
-/* ---------- typography: Instrument Serif for display, Geist for text, Geist Mono for details ---------- */
+/* ---------- typography: Instrument Serif display, Spectral reading, Schibsted Grotesk UI, Fragment Mono details ---------- */
 .hero__headline, .headline, .headline--xl, .card__big, .gh__big, .pw__name, .card__title, .xp__org, .role__name, .lab__stat b {
   font-family: var(--serif); font-weight: 400;
 }
@@ -875,7 +875,7 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: -
 .headline { font-size: var(--fs-display); line-height: 1.02; letter-spacing: -0.015em; }
 .pw__name, .card__title, .xp__org { font-size: var(--fs-title); line-height: var(--lh-title); letter-spacing: -0.01em; font-weight: 400; }
 
-/* reading text: Geist, two weights of gray */
+/* UI text: Schibsted Grotesk */
 .subhead { font-size: var(--fs-lede); line-height: 1.4; letter-spacing: -0.012em; color: var(--text-2); }
 .tile--white .subhead, .tile--gray .subhead { color: var(--text-2); }
 .tile--black .subhead { color: var(--text-3); }
@@ -892,7 +892,7 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: -
 .tabs__tab { font-size: var(--fs-ui); }
 .nav__links a { font-size: 12.5px; letter-spacing: 0; }
 
-/* details: Geist Mono, one size */
+/* details: Fragment Mono, one size */
 .layer, .card__kicker, .hobby__meta, .xp__when, .xp__idx, .pw__tags, .pw__live, .pw__bar, .gh__axis, .gh__live,
 .caption, .chat__mode, .rs__media figcaption, .lab__arch, .lab__k, .lab__stat span, .labx__foot, .footer__bottom, .lossbar {
   font-family: var(--mono); font-size: var(--fs-detail); letter-spacing: 0; line-height: 1.5;
@@ -951,7 +951,7 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: -
 }
 .xp__sum {
   font-family: var(--text-serif); font-size: 20px; line-height: 1.5; letter-spacing: -0.003em;
-  font-variation-settings: "opsz" 18; color: var(--text); margin-top: 14px; max-width: 34em;
+  color: var(--text); margin-top: 14px; max-width: 34em;
   hanging-punctuation: first; text-wrap: pretty;
 }
 .xp__when { font-size: 12px; color: var(--text-2); padding-top: 3px; }

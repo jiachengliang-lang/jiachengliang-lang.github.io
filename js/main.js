@@ -292,7 +292,6 @@ function projectWindow(p) {
     <div class="pw__body">
       <h3 class="pw__name">${esc(p.name)}</h3>
       <p class="pw__line">${esc(p.oneLine)}</p>
-      <p class="pw__tags">${esc(p.tags.slice(0, 4).join(" · "))}</p>
       <div class="pw__links">${links}</div>
     </div>
   </article>`;

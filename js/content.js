@@ -48,7 +48,7 @@ export const SITE = {
   // [text](#id) becomes an in-page link
   about: [
     "Hi, I'm Jiacheng, an Electrical and Computer Engineering student at UC Berkeley with a deep passion for software development and machine learning.",
-    "I'm currently designing software for an optometry lab and researching with a few labs around campus. Lately I've also fallen for robotics, because nothing beats watching code you wrote actually move (or confidently fall over). You can find my recent work [here](#work).",
+    "I'm currently designing software for an optometry lab and researching with a few labs around campus. I also love teaching lost kids how to debug in C, which mostly means convincing them a segfault isn't personal. Lately I've fallen for robotics, because nothing beats watching code you wrote actually move (or confidently fall over). You can find my recent work [here](#work).",
     "Outside of school, you can find me hooping in the gym, running on the most random tracks, or watching Warriors games with a Diet Coke in hand. I also grind LeetCode, a hobby that has taught me more about the words “Wrong Answer” than any class ever could.",
   ],
 
