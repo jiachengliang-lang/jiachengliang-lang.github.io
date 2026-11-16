@@ -364,7 +364,7 @@ function render() {
   $("#facts").innerHTML = SITE.facts.map(bigCard).join("");
   const inlineLinks = (t) => esc(t).replace(/\[([^\]]+)\]\((#[\w-]+)\)/g, '<a href="$2">$1</a>');
   $("#aboutText").innerHTML = SITE.about.map((p) => `<p>${inlineLinks(p)}</p>`).join("");
-  $("#panel-experience").innerHTML = `<ol class="card xp reveal">${SITE.experience.map((e, i) => roleRow(e, i)).join("")}</ol><div class="ctas xp__cta reveal"><a class="more" href="${SITE.links.cv}">Ask for my full CV</a></div>`;
+  $("#panel-experience").innerHTML = `<ol class="card xp reveal">${SITE.experience.map((e, i) => roleRow(e, i)).join("")}</ol><div class="ctas xp__cta reveal"><a class="more" href="${SITE.links.cv}">Request CV</a></div>`;
   $("#panel-projects").innerHTML = `<div class="pws">${SITE.projects.map(projectWindow).join("")}</div>`;
   $("#panel-research").innerHTML = `<div class="grid grid--2 grid--wide">${SITE.research.map(researchCard).join("")}</div>`;
   $("#panel-hobbies").innerHTML = `<div class="grid grid--2 grid--wide">${SITE.hobbies.map(hobbyTile).join("")}</div>`;
@@ -379,7 +379,7 @@ function render() {
       `<a href="${L.email}">Email</a>`,
       `<a href="${L.linkedin}" ${ext}>LinkedIn</a>`,
       `<a href="${L.github}" ${ext}>GitHub</a>`,
-      `<a href="${L.cv}">CV on request</a>`,
+      `<a href="${L.cv}">Request CV</a>`,
     ]),
   ].join("");
   $("#year").textContent = new Date().getFullYear();

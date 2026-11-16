@@ -100,13 +100,14 @@ export async function startGitHub(cfg) {
   const narrow = matchMedia("(max-width: 734px)");
   const render = () => {
     const weeks = Math.min(sinceWeeks, narrow.matches ? 22 : 53);
+    box.classList.toggle("gh__activity--split", weeks < 40);
     box.innerHTML = `
       <div class="gh__head">
         <div><b class="gh__big">${data.total}</b><span class="gh__lbl">contributions on GitHub ${sinceLabel}</span></div>
         <div class="gh__side"><span class="gh__live"><i></i>live from GitHub</span><a class="more" href="https://github.com/${cfg.user}" target="_blank" rel="noopener">See profile</a></div>
       </div>
-      <div class="gc">${calendar(data.days, weeks)}</div>
-      <div class="gc__legend" aria-hidden="true">Less ${[0, 1, 2, 3, 4].map((l) => `<i class="gc__c--${l}"></i>`).join("")} More</div>`;
+      <div class="gh__grid"><div class="gc">${calendar(data.days, weeks)}</div>
+      <div class="gc__legend" aria-hidden="true">Less ${[0, 1, 2, 3, 4].map((l) => `<i class="gc__c--${l}"></i>`).join("")} More</div></div>`;
     box.hidden = false;
     box.classList.remove("is-drawn");
     requestAnimationFrame(() => requestAnimationFrame(() => box.classList.add("is-drawn")));

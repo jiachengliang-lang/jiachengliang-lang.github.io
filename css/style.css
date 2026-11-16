@@ -1047,6 +1047,35 @@ body { font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: -
   .about__photo { width: min(100%, 300px); margin: 0 auto; border-radius: 18px; }
 }
 
+/* ---------- polish pass ---------- */
+/* graph card: number on the left, grid on the right when the span is short */
+.gh__activity--split { display: grid; grid-template-columns: minmax(220px, 300px) minmax(0, 1fr); gap: 16px 48px; align-items: center; }
+.gh__activity--split .gh__head { flex-direction: column; align-items: flex-start; gap: 18px; margin-bottom: 0; }
+.gh__activity--split .gh__big { display: block; margin: 0 0 6px; }
+.gh__activity--split .gh__lbl { display: block; }
+.gh__activity--split .gc__svg { margin: 0 0 0 auto; }
+@media (max-width: 900px) {
+  .gh__activity--split { grid-template-columns: 1fr; }
+  .gh__activity--split .gc__svg { margin: 0 auto; }
+}
+/* hero: a shorter band so About peeks into the first screen */
+.hero__stage { height: clamp(180px, 23vh, 260px); }
+/* VERA print sits on a dark panel, beside the dark chip photo, in both themes */
+.rs__media:not(.rs__media--photo), :root[data-theme="dark"] .rs__media:not(.rs__media--photo) { background: #161618; }
+.rs__media:not(.rs__media--photo) figcaption, :root[data-theme="dark"] .rs__media:not(.rs__media--photo) figcaption { color: #f5f5f7; background: rgba(0, 0, 0, .45); }
+/* footer links: taller tap targets */
+.footer__col a { margin-bottom: 0; padding: 7px 0; }
+.xp__cta .more, .gh__side .more { display: inline-block; padding: 4px 0; }
+@media (max-width: 734px) {
+  .hero .hero__stage { height: 250px; }
+  .hero__keys { flex-wrap: wrap; font-size: 13px; gap: 4px 10px; padding: 0 16px; }
+  .hero__keys .hero__edge { width: 14px; }
+  /* third keyword drops to its own line, without a dangling connector */
+  .hero__keys .hero__edge:last-of-type { display: none; }
+  .hero__keys span:last-child { flex-basis: 100%; text-align: center; }
+  .footer__col a { padding: 10px 0; }
+}
+
 /* ---------- motion ---------- */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.is-in { opacity: 1; transform: none; }

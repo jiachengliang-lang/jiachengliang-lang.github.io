@@ -57,8 +57,8 @@ export const SITE = {
   },
   experience: [
     {
-      org: "Visionary Optical Imaging Lab (VOILA) @ Berkeley",
-      short: "VOILA @ Berkeley",
+      org: "Visionary Optical Imaging Lab (VOILA) at Berkeley",
+      short: "VOILA at Berkeley",
       role: "Software Engineer Intern",
       dates: "Aug. 2026 – Present",
       place: "Berkeley, CA",
@@ -206,7 +206,7 @@ export const SITE = {
       role: "I'm on the AI team, designing the policies that drive it. We build on NVIDIA's PersonaPlex and add our own improvements.",
       tags: ["Speech AI", "Policy design", "NVIDIA PersonaPlex", "Robotics"],
       art: "face",
-      image: { light: "assets/vera-light.png", alt: "VERA, a robotic head, printed as a halftone: one large head and three small ones showing listen, speak and yield.", caption: "Listen · speak · yield" },
+      image: { light: "assets/vera-dark.png", alt: "VERA, a robotic head, printed as a halftone: one large head and three small ones showing listen, speak and yield.", caption: "Listen · speak · yield" },
     },
     {
       title: "Integrated circuits for health sensing",
