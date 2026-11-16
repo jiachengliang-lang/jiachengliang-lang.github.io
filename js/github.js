@@ -5,18 +5,34 @@
 // are cached in localStorage for an hour; if the service can't be reached, the
 // last cached result is used, and with no cache the graph is left out.
 
-const CACHE_KEY = "gh-calendar-v1", CACHE_MS = 60 * 60 * 1000;
+const CACHE_KEY = "gh-calendar-v2", CACHE_MS = 30 * 60 * 1000;
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+// Fetch the current and previous calendar years and keep the last 371 days.
+// (Per-year requests are cached separately by the service from its "last year"
+// view, and they reflect profile changes such as private contributions sooner.)
+async function fetchYear(user, y) {
+  const r = await fetch(`https://github-contributions-api.jogruber.de/v4/${encodeURIComponent(user)}?y=${y}`);
+  if (!r.ok) throw new Error(String(r.status));
+  return (await r.json()).contributions;
+}
 
 async function load(user) {
   let cached = null;
   try { cached = JSON.parse(localStorage.getItem(CACHE_KEY) || "null"); } catch {}
   if (cached && cached.user === user && Date.now() - cached.t < CACHE_MS) return cached.v;
   try {
-    const r = await fetch(`https://github-contributions-api.jogruber.de/v4/${encodeURIComponent(user)}?y=last`);
-    if (!r.ok) throw new Error(String(r.status));
-    const d = await r.json();
-    const v = { days: d.contributions.map((c) => [c.date, c.count, c.level]), total: d.total.lastYear };
+    const now = new Date(), y = now.getFullYear();
+    const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    const today = iso(now);
+    const yearAgo = new Date(now); yearAgo.setFullYear(y - 1);
+    const from = new Date(now); from.setDate(from.getDate() - 370);
+    const [prev, cur] = await Promise.all([fetchYear(user, y - 1), fetchYear(user, y)]);
+    const all = prev.concat(cur).filter((c) => c.date >= iso(from) && c.date <= today);
+    const v = {
+      days: all.map((c) => [c.date, c.count, c.level]),
+      total: all.filter((c) => c.date > iso(yearAgo)).reduce((n, c) => n + c.count, 0),
+    };
     try { localStorage.setItem(CACHE_KEY, JSON.stringify({ user, t: Date.now(), v })); } catch {}
     return v;
   } catch (err) {
